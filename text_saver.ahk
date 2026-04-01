@@ -12,9 +12,9 @@ Menu, Tray, Tip, Text Saver (Ctrl+Shift+S)
 Menu, Tray, Add, 切換模式 - 收集箱 (inbox), SetModeInbox
 Menu, Tray, Add, 切換模式 - 桌面 (desktop), SetModeDesktop
 Menu, Tray, Add, 切換模式 - 每日筆記 (daily), SetModeDaily
-Menu, Tray, Add, --- ; 分隔線
+Menu, Tray, Add
 Menu, Tray, Add, 開啟設定檔, OpenConfig
-Menu, Tray, Add, 結束, ExitApp
+Menu, Tray, Add, 結束, MenuExit
 
 ; =============================================
 ; 主要熱鍵：Ctrl+Shift+S
@@ -95,7 +95,7 @@ OpenConfig:
     Run, notepad.exe "%A_ScriptDir%\config.json"
     Return
 
-ExitApp:
+MenuExit:
     ExitApp
     Return
 
