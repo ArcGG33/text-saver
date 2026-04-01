@@ -1,12 +1,12 @@
 ; Text Saver - Windows AutoHotkey v1 腳本
-; 按 Ctrl+Shift+S 儲存選取的文字
+; 觸發方式：選取文字後，按住 Shift + 滑鼠右鍵
 
 #NoEnv
 #SingleInstance Force
 SendMode Input
 SetWorkingDir %A_ScriptDir%
 
-Menu, Tray, Tip, Text Saver (Ctrl+Shift+S)
+Menu, Tray, Tip, Text Saver (Shift+右鍵)
 Menu, Tray, Add, 收集箱模式 (inbox), SetModeInbox
 Menu, Tray, Add, 桌面模式 (desktop), SetModeDesktop
 Menu, Tray, Add, 每日筆記模式 (daily), SetModeDaily
@@ -16,12 +16,12 @@ Menu, Tray, Add, 結束, MenuExit
 
 Return
 
-; === 主要熱鍵：Ctrl+Shift+S ===
-^+s::
+; === 觸發：Shift + 滑鼠右鍵 ===
++RButton::
     SavedClip := ClipboardAll
     Clipboard := ""
     Send, ^c
-    ClipWait, 1.5
+    ClipWait, 1
     if (Clipboard = "") {
         ToolTip, Text Saver: 未選取任何文字
         SetTimer, ClearTip, -2000
@@ -50,24 +50,22 @@ ClearTip:
     ToolTip
     Return
 
-; === 系統匣選單 ===
 SetModeInbox:
+    NewMode := "inbox"
     GoSub, DoSetMode
     Return
+
 SetModeDesktop:
+    NewMode := "desktop"
     GoSub, DoSetMode
     Return
+
 SetModeDaily:
+    NewMode := "daily"
     GoSub, DoSetMode
     Return
 
 DoSetMode:
-    if (A_ThisLabel = "SetModeInbox")
-        NewMode := "inbox"
-    else if (A_ThisLabel = "SetModeDesktop")
-        NewMode := "desktop"
-    else
-        NewMode := "daily"
     ConfigFile := A_ScriptDir . "\config.json"
     FileRead, Cfg, %ConfigFile%
     Cfg := RegExReplace(Cfg, """mode""\s*:\s*""[^""]*""", """mode"": """ . NewMode . """")

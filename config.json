@@ -1,7 +1,7 @@
 {
   "mode": "inbox",
-  "inbox_folder": "~/Documents/TextSaver/inbox",
-  "daily_folder": "~/Documents/TextSaver/daily",
-  "desktop_path": "~/Desktop",
+  "inbox_folder": "~/桌面/TextSaver/inbox",
+  "daily_folder": "~/桌面/TextSaver/daily",
+  "desktop_path": "~/桌面",
   "file_extension": ".txt"
 }
