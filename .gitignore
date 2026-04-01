@@ -1,0 +1,19 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+
+# 儲存的文字內容（不上傳到 GitHub）
+saved/
+inbox/
+daily/
+
+# OS 產生的檔案
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# 暫存檔
+*.tmp
+text_saver_in.txt
+text_saver_out.txt
